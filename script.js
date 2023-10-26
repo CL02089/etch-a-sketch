@@ -1,3 +1,5 @@
+'use strict';
+
 const container = document.querySelector('.container');
 
 const makeGrid = function (num) {
@@ -6,7 +8,7 @@ const makeGrid = function (num) {
     container.appendChild(row);
     row.className = 'row';
 
-    let height = 400 / num;
+    let height = 500 / num;
     row.style.height = `${height}px`;
 
     for (let i = 0; i < num; i++) {
@@ -18,3 +20,13 @@ const makeGrid = function (num) {
   }
 };
 makeGrid(16);
+
+const cells = document.querySelectorAll('.cell');
+const rows = document.querySelectorAll('.row');
+
+console.log(cells);
+cells.forEach((c) => {
+  c.addEventListener('mouseover', () => {
+    c.style.backgroundColor = 'black';
+  });
+});

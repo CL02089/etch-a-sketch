@@ -7,8 +7,8 @@
 
 .container {
   border: black solid 1px;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
 }
 .row {
   display: flex;
@@ -18,6 +18,6 @@
   border: black solid 1px;
 }
 
-.squareBlack {
+.cblack {
   background-color: black;
 }
