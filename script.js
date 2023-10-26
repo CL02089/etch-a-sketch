@@ -2,6 +2,8 @@
 
 const container = document.querySelector('.container');
 
+const cellNumBtn = document.querySelector('.cellnum');
+
 const makeGrid = function (num) {
   for (let i = 0; i < num; i++) {
     let row = document.createElement('div');
@@ -20,13 +22,24 @@ const makeGrid = function (num) {
   }
 };
 makeGrid(16);
-
-const cells = document.querySelectorAll('.cell');
-const rows = document.querySelectorAll('.row');
-
-console.log(cells);
-cells.forEach((c) => {
-  c.addEventListener('mouseover', () => {
-    c.style.backgroundColor = 'black';
-  });
+cellNumBtn.addEventListener('click', () => {
+  let cellNum = Number(prompt('number of squares per side'));
+  if (cellNum > 100) alert('The max number of squares is 100!');
+  if (cellNum <= 100) {
+    container.innerHTML = '';
+    makeGrid(cellNum);
+    paint();
+  }
 });
+
+const paint = function () {
+  const cells = document.querySelectorAll('.cell');
+  const rows = document.querySelectorAll('.row');
+
+  cells.forEach((c) => {
+    c.addEventListener('mouseover', () => {
+      c.style.backgroundColor = 'black';
+    });
+  });
+};
+paint();
