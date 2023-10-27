@@ -5,6 +5,7 @@ const container = document.querySelector('.container');
 const cellNumBtn = document.querySelector('.cellnum');
 const blackBtn = document.querySelector('.black');
 const eraserBtn = document.querySelector('.eraser');
+const colorBtn = document.querySelector('.color');
 
 const makeGrid = function (num) {
   for (let i = 0; i < num; i++) {
@@ -46,6 +47,24 @@ const eraser = function () {
   });
 };
 
+const color = function () {
+  const random = function () {
+    let number = Math.floor(Math.random() * 256);
+    return number;
+  };
+
+  const cells = document.querySelectorAll('.cell');
+
+  cells.forEach((c) => {
+    c.addEventListener('mouseover', () => {
+      let num1 = random();
+      let num2 = random();
+      let num3 = random();
+      c.style.backgroundColor = `rgb(${num1},${num2},${num3})`;
+    });
+  });
+};
+
 cellNumBtn.addEventListener('click', () => {
   let cellNum = Number(prompt('number of squares per side'));
   if (cellNum > 100) alert('The max number of squares is 100!');
@@ -58,4 +77,5 @@ cellNumBtn.addEventListener('click', () => {
 
 eraserBtn.addEventListener('click', eraser);
 blackBtn.addEventListener('click', paint);
+colorBtn.addEventListener('click', color);
 makeGrid(16);
