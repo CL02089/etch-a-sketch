@@ -3,6 +3,8 @@
 const container = document.querySelector('.container');
 
 const cellNumBtn = document.querySelector('.cellnum');
+const blackBtn = document.querySelector('.black');
+const eraserBtn = document.querySelector('.eraser');
 
 const makeGrid = function (num) {
   for (let i = 0; i < num; i++) {
@@ -20,8 +22,30 @@ const makeGrid = function (num) {
       cell.style.width = '100%';
     }
   }
+
+  paint();
 };
-makeGrid(16);
+
+const paint = function () {
+  const cells = document.querySelectorAll('.cell');
+
+  cells.forEach((c) => {
+    c.addEventListener('mouseover', () => {
+      c.style.backgroundColor = 'black';
+    });
+  });
+};
+
+const eraser = function () {
+  const cells = document.querySelectorAll('.cell');
+
+  cells.forEach((c) => {
+    c.addEventListener('mouseover', () => {
+      c.style.backgroundColor = 'white';
+    });
+  });
+};
+
 cellNumBtn.addEventListener('click', () => {
   let cellNum = Number(prompt('number of squares per side'));
   if (cellNum > 100) alert('The max number of squares is 100!');
@@ -32,14 +56,6 @@ cellNumBtn.addEventListener('click', () => {
   }
 });
 
-const paint = function () {
-  const cells = document.querySelectorAll('.cell');
-  const rows = document.querySelectorAll('.row');
-
-  cells.forEach((c) => {
-    c.addEventListener('mouseover', () => {
-      c.style.backgroundColor = 'black';
-    });
-  });
-};
-paint();
+eraserBtn.addEventListener('click', eraser);
+blackBtn.addEventListener('click', paint);
+makeGrid(16);
