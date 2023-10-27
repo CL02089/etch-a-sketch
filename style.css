@@ -6,21 +6,19 @@
 }
 
 .container {
-  border: black solid 1px;
+  border: black solid;
+  background-color: white;
   margin-top: 20px;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
 }
 .row {
   display: flex;
   height: 6%;
 }
 .cell {
-  border: black solid 1px;
-}
-
-.cblack {
-  background-color: black;
+  border: rgb(105, 105, 105, 0.5) solid 1px;
+  border-width: thin;
 }
 
 .buttons {
